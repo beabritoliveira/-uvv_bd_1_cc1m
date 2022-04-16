@@ -48,6 +48,32 @@ CREATE TABLE dependente (
                 parentesco VARCHAR(15)
 );
 
+alter table funcionario add foreign key (cpf_supervisor) references funcionario (cpf);
+alter table departamento add foreign key (cpf_gerente) references funcionario (cpf);
+
+alter table projeto add foreign key (numero_departamento) references departamento (numero_departamento);
+alter table localizacoes_departamento add foreign key (numero_departamento) references departamento (numero_departamento);
+
+alter table trabalha_em add foreign key (cpf_funcionario) references funcionario (cpf);
+alter table trabalha_em add foreign key (numero_projeto) references projeto (numero_projeto);
+alter table dependente add foreign key (cpf_funcionario) references funcionario (cpf);
+
+
+alter table funcionario add primary key (cpf);
+alter table departamento add primary key (número_departamento);
+alter table projeto add primary key (numero_projeto);
+alter table localizacoes_departamento add primary key (numero_departamento);
+alter table trabalha_em add primary key (numero_projeto, cpf_funcionario);
+alter table dependente add primary key (nome_dependente, cpf_funcionario);
+
+
+
+CREATE UNIQUE INDEX departamento_idx
+ ON departamento
+ ( nome_departamento );
+CREATE UNIQUE INDEX projeto_idx
+ ON projeto
+ ( nome_projeto );
 
 
 
