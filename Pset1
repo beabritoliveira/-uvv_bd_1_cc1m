@@ -10,87 +10,57 @@ CREATE TABLE funcionario (
                 sexo CHAR(1),
                 salario NUMERIC(10,2),
                 cpf_supervisor CHAR(11) NOT NULL,
-                numero_departamento INTEGER NOT NULL,
-                CONSTRAINT funcionario_pk PRIMARY KEY (cpf)
+                numero_departamento INTEGER NOT NULL
 );
+
+
 CREATE TABLE departamento (
                 numero_departamento INTEGER NOT NULL,
                 nome_departamento VARCHAR(15) NOT NULL,
                 cpf_gerente CHAR(11) NOT NULL,
-                data_inicio_gerente DATE,
-                CONSTRAINT departamento_pk PRIMARY KEY (numero_departamento)
+                data_inicio_gerente DATE
 );
-CREATE UNIQUE INDEX departamento_idx
- ON departamento
- ( nome_departamento );
+ 
 CREATE TABLE projeto (
                 numero_projeto INTEGER NOT NULL,
                 nome_projeto VARCHAR(15) NOT NULL,
                 local_projeto VARCHAR(15),
-                numero_departamento INTEGER NOT NULL,
-                CONSTRAINT projeto_pk PRIMARY KEY (numero_projeto)
+                numero_departamento INTEGER NOT NULL
 );
-CREATE UNIQUE INDEX projeto_idx
- ON projeto
- ( nome_projeto );
+ 
 CREATE TABLE localizacoes_departamento (
                 numero_departamento INTEGER NOT NULL,
-                local VARCHAR(15) NOT NULL,
-                CONSTRAINT localizacoes_departamento_pk PRIMARY KEY (numero_departamento, local)
+                local VARCHAR(15) NOT NULL
 );
+
+
 CREATE TABLE trabalha_em (
                 cpf_funcionario CHAR(11) NOT NULL,
                 numero_projeto INTEGER NOT NULL,
-                hora NUMERIC(3,1) NOT NULL,
-                CONSTRAINT trabalha_em_pk PRIMARY KEY (cpf_funcionario, numero_projeto)
+                hora NUMERIC(3,1) NOT NULL
 );
+
 CREATE TABLE dependente (
                 cpf_funcionario CHAR(11) NOT NULL,
                 nome_dependente VARCHAR(15) NOT NULL,
                 sexo CHAR(1),
                 data_nascimento DATE,
-                parentesco VARCHAR(15),
-                CONSTRAINT dependente_pk PRIMARY KEY (cpf_funcionario, nome_dependente)
+                parentesco VARCHAR(15)
 );
 
-ALTER TABLE dependente ADD CONSTRAINT funcionario_dependente_fk
-FOREIGN KEY (cpf_funcionario)
-REFERENCES funcionario (cpf)
-;
-ALTER TABLE funcionario ADD CONSTRAINT funcionario_funcionario_fk
-FOREIGN KEY (cpf_supervisor)
-REFERENCES funcionario (cpf)
-;
-ALTER TABLE trabalha_em ADD CONSTRAINT funcionario_trabalha_em_fk
-FOREIGN KEY (cpf_funcionario)
-REFERENCES funcionario (cpf)
-;
 
-ALTER TABLE departamento ADD CONSTRAINT funcionario_departamento_fk
-FOREIGN KEY (cpf_gerente)
-REFERENCES funcionario (cpf)
-;
 
-ALTER TABLE localizacoes_departamento ADD CONSTRAINT departamento_localizacoes_departamento_fk
-FOREIGN KEY (numero_departamento)
-REFERENCES departamento (numero_departamento)
-;
-ALTER TABLE projeto ADD CONSTRAINT departamento_projeto_fk
-FOREIGN KEY (numero_departamento)
-REFERENCES departamento (numero_departamento)
-;
-ALTER TABLE trabalha_em ADD CONSTRAINT projeto_trabalha_em_fk
-FOREIGN KEY (numero_projeto)
-REFERENCES projeto (numero_projeto)
-;
+
+
+
+
+
 INSERT INTO funcionario (primeiro_nome, nome_meio, ultimo_nome, cpf, data_nascimento,endereco, sexo, salario, cpf_supervisor, numero_departamento) VALUES (
 "João","B", "Silva", 12345678966, 19650109,"Rua das Flores,751,São Paulo,SP", "M", 30.000, 33344555587, 5
 );
 INSERT INTO funcionario  (primeiro_nome, nome_meio, ultimo_nome, cpf, data_nascimento,endereco, sexo, salario, cpf_supervisor, numero_departamento) VALUES (
-"Jennifer", "S", "Souza", 98765432168, 19410620, "Av.Arthur de Lima,54,Santo André,SP", "F", 43.000, 88866555576, 4
+"Jennifer", "S", "Souza", 98765432168, 19410620, "Av Arthur de Lima,54,Santo André,SP", "F", 43.000, 88866555576, 4
 );
-
-
 INSERT INTO funcionario  (primeiro_nome, nome_meio, ultimo_nome, cpf, data_nascimento,endereco, sexo, salario, cpf_supervisor, numero_departamento) VALUES (
 "Fernando", "T", "Wong", 33344555587, 19551208, "Rua da Lapa, 34, São Paulo, SP", "M", 40.000, 88866555576, 5
 );
@@ -183,10 +153,10 @@ INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
 66688444476, 3, 40.0
 );
 INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
-45345345376, 1, 20.5
+45345345376, 1, 20.0
 );
 INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
-45345345376, 2, 20.5
+45345345376, 2, 20.0
 );
 INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
 33344555587, 2, 10.0
