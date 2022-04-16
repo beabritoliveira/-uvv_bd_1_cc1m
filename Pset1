@@ -1,5 +1,5 @@
-CREATE DATABASE UVV;
-USE UVV;
+CREATE DATABASE uvv;
+USE uvv;
 CREATE TABLE funcionario (
                 cpf CHAR(11) NOT NULL,
                 primeiro_nome VARCHAR(15) NOT NULL,
@@ -56,106 +56,172 @@ CREATE TABLE dependente (
 ALTER TABLE dependente ADD CONSTRAINT funcionario_dependente_fk
 FOREIGN KEY (cpf_funcionario)
 REFERENCES funcionario (cpf)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION
 ;
 ALTER TABLE funcionario ADD CONSTRAINT funcionario_funcionario_fk
 FOREIGN KEY (cpf_supervisor)
 REFERENCES funcionario (cpf)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION
 ;
 ALTER TABLE trabalha_em ADD CONSTRAINT funcionario_trabalha_em_fk
 FOREIGN KEY (cpf_funcionario)
 REFERENCES funcionario (cpf)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION
 ;
+
 ALTER TABLE departamento ADD CONSTRAINT funcionario_departamento_fk
 FOREIGN KEY (cpf_gerente)
 REFERENCES funcionario (cpf)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION
 ;
+
 ALTER TABLE localizacoes_departamento ADD CONSTRAINT departamento_localizacoes_departamento_fk
 FOREIGN KEY (numero_departamento)
 REFERENCES departamento (numero_departamento)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION
 ;
 ALTER TABLE projeto ADD CONSTRAINT departamento_projeto_fk
 FOREIGN KEY (numero_departamento)
 REFERENCES departamento (numero_departamento)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION
 ;
 ALTER TABLE trabalha_em ADD CONSTRAINT projeto_trabalha_em_fk
 FOREIGN KEY (numero_projeto)
 REFERENCES projeto (numero_projeto)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION
 ;
-INSERT INTO funcionario VALUES (
-"João", "B", "Silva", 12345678966, 09-01-1965, "Rua das Flores, 751, São Paulo, SP", "M", 30.000, 33344555587, 5
+INSERT INTO funcionario (primeiro_nome, nome_meio, ultimo_nome, cpf, data_nascimento,endereco, sexo, salario, cpf_supervisor, numero_departamento) VALUES (
+"João","B", "Silva", 12345678966, 19650109,"Rua das Flores,751,São Paulo,SP", "M", 30.000, 33344555587, 5
 );
-INSERT INTO funcionario VALUES (
-"Fernando", "T", "Wong", 33344555587, 08-12-1955, "Rua da Lapa, 34, São Paulo, SP", "M", 40.000, 888666555576, 5
-);
-INSERT INTO funcionario VALUES (
-"Alice", "J", "Zelaya", 99988777767, 19-01-1968, "Rua Souza Lima, 35, São Paulo, SP", "M", 25.000, 33344555587, 4
-);
-INSERT INTO funcionario VALUES (
-"João", "B", "Silva", 12345678966, 09-01-1965, "Rua das Flores, 751, São Paulo, SP", "M", 30.000, 33344555587, 5
-);
-INSERT INTO funcionario VALUES (
-"João", "B", "Silva", 12345678966, 09-01-1965, "Rua das Flores, 751, São Paulo, SP", "M", 30.000, 33344555587, 5
-);
-INSERT INTO funcionario VALUES (
-"João", "B", "Silva", 12345678966, 09-01-1965, "Rua das Flores, 751, São Paulo, SP", "M", 30.000, 33344555587, 5
-);
-INSERT INTO funcionario VALUES (
-"João", "B", "Silva", 12345678966, 09-01-1965, "Rua das Flores, 751, São Paulo, SP", "M", 30.000, 33344555587, 5
-);
-INSERT INTO funcionario VALUES (
-"João", "B", "Silva", 12345678966, 09-01-1965, "Rua das Flores, 751, São Paulo, SP", "M", 30.000, 33344555587, 5
-);
-INSERT INTO funcionario VALUES (
-"João", "B", "Silva", 12345678966, 09-01-1965, "Rua das Flores, 751, São Paulo, SP", "M", 30.000, 33344555587, 5
-);
-INSERT INTO funcionario VALUES (
-"João", "B", "Silva", 12345678966, 09-01-1965, "Rua das Flores, 751, São Paulo, SP", "M", 30.000, 33344555587, 5
-);
-INSERT INTO funcionario VALUES (
-"João", "B", "Silva", 12345678966, 09-01-1965, "Rua das Flores, 751, São Paulo, SP", "M", 30.000, 33344555587, 5
-);
-INSERT INTO funcionario VALUES (
-"João", "B", "Silva", 12345678966, 09-01-1965, "Rua das Flores, 751, São Paulo, SP", "M", 30.000, 33344555587, 5
-);
-INSERT INTO funcionario VALUES (
-"João", "B", "Silva", 12345678966, 09-01-1965, "Rua das Flores, 751, São Paulo, SP", "M", 30.000, 33344555587, 5
-);
-INSERT INTO funcionario VALUES (
-"João", "B", "Silva", 12345678966, 09-01-1965, "Rua das Flores, 751, São Paulo, SP", "M", 30.000, 33344555587, 5
-);
-INSERT INTO funcionario VALUES (
-"João", "B", "Silva", 12345678966, 09-01-1965, "Rua das Flores, 751, São Paulo, SP", "M", 30.000, 33344555587, 5
-);
-INSERT INTO funcionario VALUES (
-"João", "B", "Silva", 12345678966, 09-01-1965, "Rua das Flores, 751, São Paulo, SP", "M", 30.000, 33344555587, 5
+INSERT INTO funcionario  (primeiro_nome, nome_meio, ultimo_nome, cpf, data_nascimento,endereco, sexo, salario, cpf_supervisor, numero_departamento) VALUES (
+"Jennifer", "S", "Souza", 98765432168, 19410620, "Av.Arthur de Lima,54,Santo André,SP", "F", 43.000, 88866555576, 4
 );
 
 
+INSERT INTO funcionario  (primeiro_nome, nome_meio, ultimo_nome, cpf, data_nascimento,endereco, sexo, salario, cpf_supervisor, numero_departamento) VALUES (
+"Fernando", "T", "Wong", 33344555587, 19551208, "Rua da Lapa, 34, São Paulo, SP", "M", 40.000, 88866555576, 5
+);
+INSERT INTO funcionario (primeiro_nome, nome_meio, ultimo_nome, cpf, data_nascimento,endereco, sexo, salario, cpf_supervisor, numero_departamento) VALUES (
+'André', 'V', 'Pereira', 98798798733, 19690329, 'Rua Timbira, 35, São Paulo, SP', 'M', 25.000, 98765432168, 4
+);
+INSERT INTO funcionario  (primeiro_nome, nome_meio, ultimo_nome, cpf, data_nascimento,endereco, sexo, salario, cpf_supervisor, numero_departamento) VALUES (
+"Ronaldo", "K", "Lima", 66688444476, 19620915, "Rua Rebouças,65,Piracicaba,SP", "M", 38.000, 33344555587, 5
+);
+INSERT INTO funcionario  (primeiro_nome, nome_meio, ultimo_nome, cpf, data_nascimento,endereco, sexo, salario, cpf_supervisor, numero_departamento) VALUES (
+"Joice", "A", "Leite", 45345345376, 19720731, "Av. Lucas Obes,74,São Paulo,SP", "F", 25.000, 33344555587, 5
+);
+INSERT INTO funcionario (primeiro_nome, nome_meio, ultimo_nome, cpf, data_nascimento,endereco, sexo, salario, cpf_supervisor, numero_departamento) VALUES (
+"Jorge", "E", "Brito", 88866555576, 19371110, "Rua do Horto,35,São Paulo, SP", "M", 55.000," ", 1
+);
+INSERT INTO funcionario  (primeiro_nome, nome_meio, ultimo_nome, cpf, data_nascimento,endereco, sexo, salario, cpf_supervisor, numero_departamento) VALUES (
+"Alice", "J", "Zelaya", 99988777767, 19680119, "Rua Souza Lima,35,São Paulo,SP", "F", 25.000, 98765432168, 4
+);
 
+INSERT INTO departamento (numero_departamento,nome_departamento, cpf_gerente, data_inicio_gerente) VALUES (
+5, 'Pesquisa', 33344555587, 19880522
+);
+INSERT INTO departamento (numero_departamento,nome_departamento, cpf_gerente, data_inicio_gerente) VALUES (
+4, "Administração", 98765432168, 19950101
+);
+INSERT INTO departamento (numero_departamento,nome_departamento, cpf_gerente, data_inicio_gerente) VALUES (
+1, "Matriz", 88866555576, 19810619
+);
+INSERT INTO localizacoes_departamento (numero_departamento, local) VALUES (
+1, "São Paulo"
+);
+INSERT INTO localizacoes_departamento (numero_departamento, local) VALUES (
+4, "Mauá"
+);
+INSERT INTO localizacoes_departamento (numero_departamento, local) VALUES (
+5, "Santo André"
+);
+INSERT INTO localizacoes_departamento (numero_departamento, local) VALUES (
+5, "Itu"
+);
+INSERT INTO localizacoes_departamento (numero_departamento, local) VALUES (
+5, "São Paulo"
+);
+INSERT INTO projeto (nome_projeto, numero_projeto, local_projeto, numero_departamento) VALUES(
+"ProdutoX", 1, "Santo André", 5
+);
+INSERT INTO projeto (nome_projeto, numero_projeto, local_projeto, numero_departamento) VALUES(
+"ProdutoY", 2, "Itu", 5
+);
+INSERT INTO projeto (nome_projeto, numero_projeto, local_projeto, numero_departamento) VALUES(
+"ProdutoZ", 3, "São Paulo", 5
+);
+INSERT INTO projeto (nome_projeto, numero_projeto, local_projeto, numero_departamento) VALUES(
+"Informatização", 10, "Mauá", 4
+);
+INSERT INTO projeto (nome_projeto, numero_projeto, local_projeto, numero_departamento) VALUES(
+"Reorganização", 20, "São Paulo", 1
+);
+INSERT INTO projeto (nome_projeto, numero_projeto, local_projeto, numero_departamento) VALUES(
+"Novosbenefícios", 30, "Mauá", 4
+);
+INSERT INTO dependente (cpf_funcionario, nome_dependente, sexo, data_nascimento, parentesco) VALUES(
+33344555587, "Alicia", "F", 19860405, "Filha"
+);
+INSERT INTO dependente (cpf_funcionario, nome_dependente, sexo, data_nascimento, parentesco) VALUES(
+33344555587, "Tiago", "M", 19831025, "Filho"
+);
+INSERT INTO dependente (cpf_funcionario, nome_dependente, sexo, data_nascimento, parentesco) VALUES(
+33344555587, "Janaina", "F", 19580503, "Esposa"
+); 
+INSERT INTO dependente (cpf_funcionario, nome_dependente, sexo, data_nascimento, parentesco) VALUES(
+98765432168, "Antonio", "M", 19420228, "Marido"
+); 
+INSERT INTO dependente (cpf_funcionario, nome_dependente, sexo, data_nascimento, parentesco) VALUES(
+12345678966, "Michael", "M", 19880104, "Filho"
+); 
+INSERT INTO dependente (cpf_funcionario, nome_dependente, sexo, data_nascimento, parentesco) VALUES(
+12345678966, "Alicia", "F", 19881230, "Filha"
+); 
+INSERT INTO dependente (cpf_funcionario, nome_dependente, sexo, data_nascimento, parentesco) VALUES(
+12345678966, "Elizabeth", "F", 19670505, "Esposa"
+); 
+INSERT INTO trabalha_em (cpf_funcionario, numero_projeto, hora) VALUES (
+12345678966, 1, 32.5
+);
+INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
+12345678966, 2, 7.5
+);
+INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
+66688444476, 3, 40.0
+);
+INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
+45345345376, 1, 20.5
+);
+INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
+45345345376, 2, 20.5
+);
+INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
+33344555587, 2, 10.0
+);
+INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
+33344555587, 3, 10.0
+);
+INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
+33344555587, 10, 10.0
+);
+INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
+33344555587, 20, 10.0
+);
+INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
+99988777767, 30, 30.0
+);
+INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
+99988777767, 10, 10.0
+);
+INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
+98798798733, 10, 35.0
+);
+INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
+98798798733, 30, 5.0
+);
+INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
+98765432168, 30, 20.0
+);
+INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
+98765432168, 20, 15.0
+);
 
-
-
-
-
-
-
-
-
-
+INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
+88866555576, 20, ""
+);
 
 
 
