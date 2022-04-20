@@ -76,8 +76,11 @@ CREATE UNIQUE INDEX projeto_idx
  ( nome_projeto );
 
 
+alter table funcionario
+add constraint check (sexo in('M', 'F'));
 
-
+alter table dependente
+add constraint check (sexo in('M', 'F'));
 
 
 
