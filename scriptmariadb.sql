@@ -41,7 +41,6 @@ CREATE TABLE `localizacoes_departamento` (
   `local` varchar(15) NOT NULL COMMENT 'Localização do departamento. Faz parte da PK desta tabela.',
   PRIMARY KEY (`numero_departamento`,`local`)
 ) ;
-
 CREATE TABLE `projeto` (
   `numero_projeto` int(11) NOT NULL COMMENT 'Número do projeto. É a PK desta tabela',
   `nome_projeto` varchar(15) NOT NULL COMMENT 'Nome do projeto. Deve ser único',
@@ -219,15 +218,17 @@ alter table projeto
 add constraint CHECK (numero_projeto>=0);
 
 alter table departamento add foreign key (cpf_gerente) references funcionario (cpf);
+
 alter table projeto add foreign key (numero_departamento) references departamento (numero_departamento);
+
 alter table localizacoes_departamento add foreign key (numero_departamento) references departamento (numero_departamento);
+
 alter table trabalha_em add foreign key (cpf_funcionario) references funcionario (cpf);
+
 alter table trabalha_em add foreign key (numero_projeto) references projeto (numero_projeto);
 
 alter table dependente add foreign key (cpf_funcionario) references funcionario (cpf);
+
 alter table funcionário add foreign key (numero_departamento) references departamento (numero_departamento);
 
 alter table funcionario add foreign key (cpf_supervisor) references funcionario (cpf);
-ALTER TABLE funcionario ADD CONSTRAINT funcionario_funcionario_fk
-FOREIGN KEY (cpf_supervisor)
-REFERENCES funcionario (cpf);
