@@ -321,7 +321,7 @@ INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
 );
 
 INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
-88866555576, 20, ""
+88866555576, 20, "0"
 );
 
 alter table funcionario
