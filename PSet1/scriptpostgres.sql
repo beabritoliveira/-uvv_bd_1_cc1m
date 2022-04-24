@@ -187,10 +187,10 @@ COMMENT ON COLUMN elmasri.departamento.data_inicio_gerente
     IS 'Data do início do gerente no departamento.';
 
 INSERT INTO funcionario (primeiro_nome, nome_meio, ultimo_nome, cpf, data_nascimento,endereco, sexo, salario, cpf_supervisor, numero_departamento) VALUES (
-"João","B", "Silva", 12345678966, 19650109,"Rua das Flores,751,São Paulo,SP", "M", 30.000, 33344555587, 5
+"João","B", "Silva", 12345678966, 19650109,"Rua da Flor,751,São Paulo,SP", "M", 30.000, 33344555587, 5
 );
 INSERT INTO funcionario  (primeiro_nome, nome_meio, ultimo_nome, cpf, data_nascimento,endereco, sexo, salario, cpf_supervisor, numero_departamento) VALUES (
-"Jennifer", "S", "Souza", 98765432168, 19410620, "Av Arthur de Lima,54,Santo André,SP", "F", 43.000, 88866555576, 4
+"Jennifer", "S", "Souza", 98765432168, 19410620, "Av Artur Lima,54,Sant André,SP", "F", 43.000, 88866555576, 4
 );
 INSERT INTO funcionario  (primeiro_nome, nome_meio, ultimo_nome, cpf, data_nascimento,endereco, sexo, salario, cpf_supervisor, numero_departamento) VALUES (
 "Fernando", "T", "Wong", 33344555587, 19551208, "Rua da Lapa, 34, São Paulo, SP", "M", 40.000, 88866555576, 5
