@@ -186,93 +186,93 @@ COMMENT ON COLUMN elmasri.departamento.cpf_gerente
 COMMENT ON COLUMN elmasri.departamento.data_inicio_gerente
     IS 'Data do início do gerente no departamento.';
 
-INSERT INTO funcionario (primeiro_nome, nome_meio, ultimo_nome, cpf, data_nascimento,endereco, sexo, salario, cpf_supervisor, numero_departamento) VALUES (
-"João","B", "Silva", 12345678966, 19650109,"Rua da Flor,751,São Paulo,SP", "M", 30.000, 33344555587, 5
+INSERT INTO elmasri.funcionario (primeiro_nome, nome_meio, ultimo_nome, cpf, data_nascimento,endereco, sexo, salario, cpf_supervisor, numero_departamento) VALUES 
+(‘João’,’B’, ‘Silva’, 12345678966 , 01091965 ,‘Rua da Flor,751,São Paulo/SP’, ‘M’, 30.000, 33344555587, 5
 );
 INSERT INTO funcionario  (primeiro_nome, nome_meio, ultimo_nome, cpf, data_nascimento,endereco, sexo, salario, cpf_supervisor, numero_departamento) VALUES (
-"Jennifer", "S", "Souza", 98765432168, 19410620, "Av Artur Lima,54,Sant André,SP", "F", 43.000, 88866555576, 4
+‘Jennifer’, ‘S’, ‘Souza’, 98765432168, 19410620, ‘Av Artur Lima,54,Santo André,SP’, ‘F’, 43.000, 88866555576, 4
 );
 INSERT INTO funcionario  (primeiro_nome, nome_meio, ultimo_nome, cpf, data_nascimento,endereco, sexo, salario, cpf_supervisor, numero_departamento) VALUES (
-"Fernando", "T", "Wong", 33344555587, 19551208, "Rua da Lapa, 34, São Paulo, SP", "M", 40.000, 88866555576, 5
+‘Fernando’, ‘T’, ‘Wong’, 33344555587, 19551208, ‘Rua da Lapa, 34, São Paulo, SP’, ‘M’, 40.000, 88866555576, 5
 );
 INSERT INTO funcionario (primeiro_nome, nome_meio, ultimo_nome, cpf, data_nascimento,endereco, sexo, salario, cpf_supervisor, numero_departamento) VALUES (
 'André', 'V', 'Pereira', 98798798733, 19690329, 'Rua Timbira, 35, São Paulo, SP', 'M', 25.000, 98765432168, 4
 );
 INSERT INTO funcionario  (primeiro_nome, nome_meio, ultimo_nome, cpf, data_nascimento,endereco, sexo, salario, cpf_supervisor, numero_departamento) VALUES (
-"Ronaldo", "K", "Lima", 66688444476, 19620915, "Rua Rebouças,65,Piracicaba,SP", "M", 38.000, 33344555587, 5
+‘Ronaldo’, ‘K’, ‘Lima’, 66688444476, 19620915, ‘Rua Rebouças,65,Piracicaba,SP’, ‘M’, 38.000, 33344555587, 5
 );
 INSERT INTO funcionario  (primeiro_nome, nome_meio, ultimo_nome, cpf, data_nascimento,endereco, sexo, salario, cpf_supervisor, numero_departamento) VALUES (
-"Joice", "A", "Leite", 45345345376, 19720731, "Av. Lucas Obes,74,São Paulo,SP", "F", 25.000, 33344555587, 5
+‘Joice’, ‘A’, ‘Leite’, 45345345376, 19720731, ‘Av. Lucas Obes,74,São Paulo,SP’, ‘F’, 25.000, 33344555587, 5
 );
 INSERT INTO funcionario (primeiro_nome, nome_meio, ultimo_nome, cpf, data_nascimento,endereco, sexo, salario, cpf_supervisor, numero_departamento) VALUES (
-"Jorge", "E", "Brito", 88866555576, 19371110, "Rua do Horto,35,São Paulo, SP", "M", 55.000," ", 1
+‘Jorge’, ‘E’, ‘Brito’, 88866555576, 19371110, ‘Rua do Horto,35,São Paulo, SP’, ‘M’, 55.000,’ ‘, 1
 );
 INSERT INTO funcionario  (primeiro_nome, nome_meio, ultimo_nome, cpf, data_nascimento,endereco, sexo, salario, cpf_supervisor, numero_departamento) VALUES (
-"Alice", "J", "Zelaya", 99988777767, 19680119, "Rua Souza Lima,35,São Paulo,SP", "F", 25.000, 98765432168, 4
+‘Alice’, ‘J’, ‘Zelaya’, 99988777767, 19680119, ‘Rua Souza Lima,35,São Paulo,SP’, ‘F’, 25.000, 98765432168, 4
 );
 
 INSERT INTO departamento (numero_departamento,nome_departamento, cpf_gerente, data_inicio_gerente) VALUES (
 5, 'Pesquisa', 33344555587, 19880522
 );
 INSERT INTO departamento (numero_departamento,nome_departamento, cpf_gerente, data_inicio_gerente) VALUES (
-4, "Administração", 98765432168, 19950101
+4, ‘Administração’, ‘98765432168’, ‘19950101’
 );
 INSERT INTO departamento (numero_departamento,nome_departamento, cpf_gerente, data_inicio_gerente) VALUES (
-1, "Matriz", 88866555576, 19810619
+1, ‘Matriz’, 88866555576, 19810619
 );
 INSERT INTO localizacoes_departamento (numero_departamento, local) VALUES (
-1, "São Paulo"
+1, ‘São Paulo’
 );
 INSERT INTO localizacoes_departamento (numero_departamento, local) VALUES (
-4, "Mauá"
+4, ‘Mauá’
 );
 INSERT INTO localizacoes_departamento (numero_departamento, local) VALUES (
-5, "Santo André"
+5, ‘Santo André’
 );
 INSERT INTO localizacoes_departamento (numero_departamento, local) VALUES (
-5, "Itu"
+5, ‘Itu’
 );
 INSERT INTO localizacoes_departamento (numero_departamento, local) VALUES (
-5, "São Paulo"
+5, ‘São Paulo’
 );
 INSERT INTO projeto (nome_projeto, numero_projeto, local_projeto, numero_departamento) VALUES(
-"ProdutoX", 1, "Santo André", 5
+‘ProdutoX’, 1, ‘Santo André’, 5
 );
 INSERT INTO projeto (nome_projeto, numero_projeto, local_projeto, numero_departamento) VALUES(
-"ProdutoY", 2, "Itu", 5
+‘ProdutoY’, 2, ‘Itu’, 5
 );
 INSERT INTO projeto (nome_projeto, numero_projeto, local_projeto, numero_departamento) VALUES(
-"ProdutoZ", 3, "São Paulo", 5
+‘ProdutoZ’, 3, ‘São Paulo’, 5
 );
 INSERT INTO projeto (nome_projeto, numero_projeto, local_projeto, numero_departamento) VALUES(
-"Informatização", 10, "Mauá", 4
+‘Informatização’, 10, ‘Mauá’, 4
 );
 INSERT INTO projeto (nome_projeto, numero_projeto, local_projeto, numero_departamento) VALUES(
-"Reorganização", 20, "São Paulo", 1
+‘Reorganização’, 20, ‘São Paulo’, 1
 );
 INSERT INTO projeto (nome_projeto, numero_projeto, local_projeto, numero_departamento) VALUES(
-"Novosbenefícios", 30, "Mauá", 4
+‘Novosbenefícios’, 30, ‘Mauá’, 4
 );
 INSERT INTO dependente (cpf_funcionario, nome_dependente, sexo, data_nascimento, parentesco) VALUES(
-33344555587, "Alicia", "F", 19860405, "Filha"
+33344555587, ‘Alicia’, ‘F’, 19860405, ‘Filha’
 );
 INSERT INTO dependente (cpf_funcionario, nome_dependente, sexo, data_nascimento, parentesco) VALUES(
-33344555587, "Tiago", "M", 19831025, "Filho"
+33344555587, ‘Tiago’, ‘M’, 19831025, ‘Filho’
 );
 INSERT INTO dependente (cpf_funcionario, nome_dependente, sexo, data_nascimento, parentesco) VALUES(
-33344555587, "Janaina", "F", 19580503, "Esposa"
+33344555587, ‘Janaina’, ‘F’, 19580503, ‘Esposa’
 ); 
 INSERT INTO dependente (cpf_funcionario, nome_dependente, sexo, data_nascimento, parentesco) VALUES(
-98765432168, "Antonio", "M", 19420228, "Marido"
+98765432168, ‘Antonio’, ‘M’, 19420228, ‘Marido’
 ); 
 INSERT INTO dependente (cpf_funcionario, nome_dependente, sexo, data_nascimento, parentesco) VALUES(
-12345678966, "Michael", "M", 19880104, "Filho"
+12345678966, ‘Michael’, ‘M’, 19880104, ‘Filho’
 ); 
 INSERT INTO dependente (cpf_funcionario, nome_dependente, sexo, data_nascimento, parentesco) VALUES(
-12345678966, "Alicia", "F", 19881230, "Filha"
+12345678966, ‘Alicia’, ‘F’, 19881230, ‘Filha’
 ); 
 INSERT INTO dependente (cpf_funcionario, nome_dependente, sexo, data_nascimento, parentesco) VALUES(
-12345678966, "Elizabeth", "F", 19670505, "Esposa"
+12345678966, ‘Elizabeth’, ‘F’, 19670505, ‘Esposa’
 ); 
 INSERT INTO trabalha_em (cpf_funcionario, numero_projeto, hora) VALUES (
 12345678966, 1, 32.5
@@ -319,9 +319,8 @@ INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
 INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
 98765432168, 20, 15.0
 );
-
 INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
-88866555576, 20, "0"
+88866555576, 20, 0
 );
 
 alter table funcionario
