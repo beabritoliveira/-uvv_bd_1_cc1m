@@ -232,3 +232,9 @@ alter table dependente add foreign key (cpf_funcionario) references funcionario 
 alter table funcionario add foreign key (numero_departamento) references departamento (numero_departamento);
 
 alter table funcionario add foreign key (cpf_supervisor) references funcionario (cpf);
+
+alter table departamento COMMENT 'Tabela que armazena as informaçoẽs dos departamentos.';
+alter table projeto COMMENT 'Tabela que armazena as informações sobre os projetos dos departamentos.';
+alter table localizacoes_departamento COMMENT 'Tabela que armazena as possíveis localizações dos departamentos.';
+alter table trabalha_em COMMENT 'Tabela para armazenar quais funcionários trabalham em quais projetos.';
+alter table dependente COMMENT 'Tabela que armazena as informações dos dependentes dos funcionários.';
