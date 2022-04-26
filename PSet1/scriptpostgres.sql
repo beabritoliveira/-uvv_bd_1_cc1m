@@ -11,8 +11,8 @@ PASSWORD 'computacao@raiz'
 CREATE DATABASE uvv
     WITH  OWNER = beatriz
     ENCODING = 'UTF8'
-    LC_COLLATE = 'en_US.UTF-8'
-    LC_CTYPE = 'en_US.UTF-8'
+    LC_COLLATE = 'pt_BR.UTF-8'
+    LC_CTYPE = 'pt_BR.UTF-8'
     CONNECTION LIMIT = -1
 \g
 
