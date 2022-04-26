@@ -35,8 +35,8 @@ CREATE TABLE IF NOT EXISTS elmasri.funcionario
     ultimo_nome character varying(15) COLLATE pg_catalog."default" NOT NULL,
     data_nascimento character varying COLLATE pg_catalog."default",
     endereco character varying(30) COLLATE pg_catalog."default",
-    sexo character(1) COLLATE pg_catalog."default",
-    salario numeric(10,2),
+    sexo character(1) check (sexo in('M', 'F')) COLLATE pg_catalog."default",
+    salario numeric(10,2) CHECK (salario>=0),
     cpf_supervisor character(11) COLLATE pg_catalog."default" NOT NULL,
     numero_departamento integer NOT NULL,
     CONSTRAINT funcionario_pk PRIMARY KEY (cpf)
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS elmasri.dependente
 (
     cpf_funcionario character(11) COLLATE pg_catalog."default" NOT NULL,
     nome_dependente character varying(15) COLLATE pg_catalog."default" NOT NULL,
-    sexo character(1) COLLATE pg_catalog."default",
+    sexo character(1) check (sexo in('M', 'F')) COLLATE pg_catalog."default",
     data_nascimento date,
     parentesco character varying(15) COLLATE pg_catalog."default",
     CONSTRAINT dependente_pk PRIMARY KEY (cpf_funcionario, nome_dependente)
@@ -120,7 +120,7 @@ CREATE TABLE IF NOT EXISTS elmasri.projeto
     numero_projeto integer NOT NULL,
     nome_projeto character varying(15) COLLATE pg_catalog."default" NOT NULL,
     local_projeto character varying(15) COLLATE pg_catalog."default",
-    numero_departamento integer NOT NULL,
+    numero_departamento integer NOT NULL CHECK (numero_projeto>=0),
     CONSTRAINT projeto_pk PRIMARY KEY (numero_projeto),
     CONSTRAINT projeto_un UNIQUE (nome_projeto)
 ) \g
@@ -143,7 +143,7 @@ CREATE TABLE IF NOT EXISTS elmasri.trabalha_em
 (
     cpf_funcionario character(11) COLLATE pg_catalog."default" NOT NULL,
     numero_projeto integer NOT NULL,
-    horas numeric(3,1) NOT NULL,
+    horas numeric(3,1) NOT NULL check(horas>=0),
     CONSTRAINT trabalha_em_pk PRIMARY KEY (cpf_funcionario, numero_projeto)
 ) \g
 
@@ -161,7 +161,7 @@ COMMENT ON COLUMN elmasri.trabalha_em.horas
 
 CREATE TABLE IF NOT EXISTS elmasri.departamento 
 (
-    numero_departamento integer NOT NULL,
+    numero_departamento integer NOT NULL CHECK (numero_departamento>=0),
     nome_departamento character varying(15) COLLATE pg_catalog."default" NOT NULL,
     cpf_gerente character(11) COLLATE pg_catalog."default" NOT NULL,
     data_inicio_gerente character varying COLLATE pg_catalog."default",
@@ -324,24 +324,6 @@ INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, horas) VALUES (
 88866555576, 20, 0
 );
 
-alter table funcionario
-add constraint check (sexo in('M', 'F'));
-
-alter table 
-add constraint dependente check (sexo in('M', 'F'));
-
-alter table funcionario
-add constraint CHECK (salario>=0);
-
-alter table trabalha_em
-add constraint CHECK (hora>=0);
-
-alter table departamento
-add constraint CHECK (numero_departamento>=0);
-
-alter table projeto
-add constraint CHECK (numero_projeto>=0);
-
 alter table departamento add foreign key (cpf_gerente) references funcionario (cpf);
 
 alter table projeto add foreign key (numero_departamento) references departamento (numero_departamento);
@@ -357,3 +339,4 @@ alter table dependente add foreign key (cpf_funcionario) references funcionario 
 alter table funcionário add foreign key (numero_departamento) references departamento (numero_departamento);
 
 alter table funcionario add foreign key (cpf_supervisor) references funcionario (cpf);
+
