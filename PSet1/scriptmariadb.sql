@@ -202,8 +202,8 @@ INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
 alter table funcionario
 add constraint check (sexo in('M', 'F'));
 
-alter table 
-add constraint dependente check (sexo in('M', 'F'));
+alter table dependente
+add constraint check (sexo in('M', 'F'));
 
 alter table funcionario
 add constraint CHECK (salario>=0);
@@ -229,6 +229,6 @@ alter table trabalha_em add foreign key (numero_projeto) references projeto (num
 
 alter table dependente add foreign key (cpf_funcionario) references funcionario (cpf);
 
-alter table funcionário add foreign key (numero_departamento) references departamento (numero_departamento);
+alter table funcionario add foreign key (numero_departamento) references departamento (numero_departamento);
 
 alter table funcionario add foreign key (cpf_supervisor) references funcionario (cpf);
