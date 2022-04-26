@@ -16,8 +16,7 @@ CREATE DATABASE uvv
     CONNECTION LIMIT = -1
 \g
 
-\q 
-psql -U beatriz -W
+\c uvv beatriz
 computacao@raiz
 
 CREATE SCHEMA IF NOT EXISTS elmasri  AUTHORIZATION beatriz;
