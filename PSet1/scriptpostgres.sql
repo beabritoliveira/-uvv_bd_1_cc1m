@@ -204,7 +204,7 @@ INSERT INTO funcionario  (primeiro_nome, nome_meio, ultimo_nome, cpf, data_nasci
 'Joice', 'A', 'Leite', 45345345376, 19720731, 'Av. Lucas Obes,74,São Paulo,SP', 'F', 25.000, 33344555587, 5
 );
 INSERT INTO funcionario (primeiro_nome, nome_meio, ultimo_nome, cpf, data_nascimento,endereco, sexo, salario, cpf_supervisor, numero_departamento) VALUES (
-'Jorge', 'E', 'Brito', 88866555576, 19371110, 'Rua do Horto,35,São Paulo, SP', 'M', 55.000, 00000000000, 1
+'Jorge', 'E', 'Brito', 88866555576, 19371110, 'Rua do Horto,35,São Paulo, SP', 'M', 55.000, 88866555576 , 1
 );
 INSERT INTO funcionario  (primeiro_nome, nome_meio, ultimo_nome, cpf, data_nascimento,endereco, sexo, salario, cpf_supervisor, numero_departamento) VALUES (
 'Alice', 'J', 'Zelaya', 99988777767, 19680119, 'Rua Souza Lima,35,São Paulo,SP', 'F', 25.000, 98765432168, 4
@@ -335,7 +335,7 @@ alter table trabalha_em add foreign key (numero_projeto) references projeto (num
 
 alter table dependente add foreign key (cpf_funcionario) references funcionario (cpf);
 
-alter table funcionário add foreign key (numero_departamento) references departamento (numero_departamento);
+alter table funcionario add foreign key (numero_departamento) references departamento (numero_departamento);
 
 alter table funcionario add foreign key (cpf_supervisor) references funcionario (cpf);
 
