@@ -67,12 +67,12 @@ SELECT salario,
      (nome_meio), ' ',
      (ultimo_nome)) as nome
     from funcionario
-ORDER BY salario DESC;
+ORDER BY salario DESC, nome_departamento ASC ;
 
 UNION
 SELECT nome_departamento, cpf_gerente
 from departamento
-ORDER BY nome_departamento ASC;
+
 
 Select salario, (primeiro_nome + '' + nome_meio + '' + ultimo_nome) as nome
 from funcionario
@@ -80,7 +80,6 @@ ORDER BY salario DESC
 UNION
 Select nome_departamento, cpf_gerente
 from departamento
-ORDER BY nome_departamento ASC;
 
 para cada departamento, o nome
 do gerente e o nome dos funcionários. Ordene esse relatório por nome do departamento (em ordem crescente) e por salário dos funcionários (em ordem decrescente)
@@ -303,6 +302,38 @@ SELECT salario,
 +---------+------------------+
 
 
+
+
+
+6. SELECT numero_departamento,
+       CONCAT (
+   (primeiro_nome), ' ',
+   (nome_meio), ' ',
+   (ultimo_nome)) as nome, CONCAT (
+   (nome_dependente), ' ',
+   (nome_meio), ' ',
+   (ultimo_nome)) as nomeDependente, Floor(DATEDIFF(NOW(), dependente.data_nascimento) / 365) AS idade, dependente.sexo
+  from dependente
+  INNER JOIN funcionario ON (dependente.cpf_funcionario=funcionario.cpf); 
+
+
+
+
+(o sexo NÃO DEVE aparecer como M ou F, deve aparecer como “Masculino” ou “Feminino”)
+
+7. SELECT salario, numero_departamento,
+       CONCAT (
+   (primeiro_nome), ' ',
+   (nome_meio), ' ',
+   (ultimo_nome)) as nome 
+  from funcionario
+  EXCEPT 
+  SELECT cpf_funcionario as nome, 
+  from dependente
+  INNER JOIN funcionario on (dependente.cpf_funcionario=funcionario.cpf);
+
+prepare um relatório que mostre, para cada funcionário que NÃO
+TEM dependente, seu nome completo, departamento e salário.
 
 
 
