@@ -51,19 +51,36 @@
 +---------+----------+---------------+-----------+-------------+-------+
 
 
-5. Select nome_departamento 
+5. Select primeiro_nome, nome_meio, ultimo_nome, nome_departamento, salario, cpf_gerente
 from departamento 
 INNER JOIN funcionario on (departamento.numero_departamento=funcionario.numero_departamento);
 
 Select primeiro_nome, nome_meio, ultimo_nome, nome_departamento, salario, cpf_gerente,
 from departamento 
+inner join funcionario on (departamento.numero_departamento=funcionario.numero_departamento)
 ORDER BY nome_departamento DESC
-ORDER BY salario ASC
-inner join funcionario on (departamento.numero_departamento=funcionario.numero_departamento);
-
-Select salario 
-from funcionario
 ORDER BY salario ASC;
+
+SELECT salario,
+     CONCAT (
+     (primeiro_nome), ' ',
+     (nome_meio), ' ',
+     (ultimo_nome)) as nome
+    from funcionario
+ORDER BY salario DESC;
+
+UNION
+SELECT nome_departamento, cpf_gerente
+from departamento
+ORDER BY nome_departamento ASC;
+
+Select salario, (primeiro_nome + '' + nome_meio + '' + ultimo_nome) as nome
+from funcionario
+ORDER BY salario DESC
+UNION
+Select nome_departamento, cpf_gerente
+from departamento
+ORDER BY nome_departamento ASC;
 
 para cada departamento, o nome
 do gerente e o nome dos funcionários. Ordene esse relatório por nome do departamento (em ordem crescente) e por salário dos funcionários (em ordem decrescente)
