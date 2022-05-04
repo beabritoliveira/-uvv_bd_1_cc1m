@@ -85,6 +85,222 @@ ORDER BY nome_departamento ASC;
 para cada departamento, o nome
 do gerente e o nome dos funcionários. Ordene esse relatório por nome do departamento (em ordem crescente) e por salário dos funcionários (em ordem decrescente)
 
+SELECT nome_departamento, CONCAT (
+    ->      (primeiro_nome), ' ',
+    ->      (nome_meio), ' ',
+    ->      (ultimo_nome)) as nome, salario 
+    ->      from departamento
+    ->      inner join funcionario on (departamento.cpf_gerente=funcionario.cpf) OR (departamento.numero_departamento=funcionario.numero_departamento);
++-------------------+------------------+---------+
+| nome_departamento | nome             | salario |
++-------------------+------------------+---------+
+| Matriz            | Jorge E Brito    |   55.00 |
+| Administração     | Jennifer S Souza |   43.00 |
+| Administração     | André V Pereira  |   25.00 |
+| Administração     | Alice J Zelaya   |   25.00 |
+| Pesquisa          | João B Silva     |   30.00 |
+| Pesquisa          | Fernando T Wong  |   40.00 |
+| Pesquisa          | Joice A Leite    |   25.00 |
+| Pesquisa          | Ronaldo K Lima   |   38.00 |
++-------------------+------------------+---------+
+SELECT nome_departamento, CONCAT (
+    ->      (primeiro_nome), ' ',
+    ->      (nome_meio), ' ',
+    ->      (ultimo_nome)) as nome, salario 
+    ->      from departamento
+    ->      inner join funcionario on (departamento.cpf_gerente=funcionario.cpf) AND (departamento.numero_departamento=funcionario.numero_departamento);
++-------------------+------------------+---------+
+| nome_departamento | nome             | salario |
++-------------------+------------------+---------+
+| Matriz            | Jorge E Brito    |   55.00 |
+| Administração     | Jennifer S Souza |   43.00 |
+| Pesquisa          | Fernando T Wong  |   40.00 |
++-------------------+------------------+---------+
+SELECT nome_departamento, CONCAT (
+    ->      (primeiro_nome), ' ',
+    ->      (nome_meio), ' ',
+    ->      (ultimo_nome)) as nome, salario 
+    ->      from departamento
+    ->      inner join funcionario on (departamento.cpf_gerente=funcionario.cpf) OR (departamento.numero_departamento=funcionario.numero_departamento);
++-------------------+------------------+---------+
+| nome_departamento | nome             | salario |
++-------------------+------------------+---------+
+| Matriz            | Jorge E Brito    |   55.00 |
+| Administração     | Jennifer S Souza |   43.00 |
+| Administração     | André V Pereira  |   25.00 |
+| Administração     | Alice J Zelaya   |   25.00 |
+| Pesquisa          | João B Silva     |   30.00 |
+| Pesquisa          | Fernando T Wong  |   40.00 |
+| Pesquisa          | Joice A Leite    |   25.00 |
+| Pesquisa          | Ronaldo K Lima   |   38.00 |
++-------------------+------------------+---------+
+SELECT nome_departamento, CONCAT (
+    ->      (primeiro_nome), ' ',
+    ->      (nome_meio), ' ',
+    ->      (ultimo_nome)) as nomeGerente
+    ->      from departamento
+    ->      inner join funcionario on (departamento.cpf_gerente=funcionario.cpf) OR (departamento.numero_departamento=funcionario.numero_departamento);
++-------------------+------------------+
+| nome_departamento | nomeGerente      |
++-------------------+------------------+
+| Matriz            | Jorge E Brito    |
+| Administração     | Jennifer S Souza |
+| Administração     | André V Pereira  |
+| Administração     | Alice J Zelaya   |
+| Pesquisa          | João B Silva     |
+| Pesquisa          | Fernando T Wong  |
+| Pesquisa          | Joice A Leite    |
+| Pesquisa          | Ronaldo K Lima   |
++-------------------+------------------+
+SELECT salario,
+    ->      CONCAT (
+    ->      (primeiro_nome), ' ',
+    ->      (nome_meio), ' ',
+    ->      (ultimo_nome)) as nome 
+    ->      from funcionario;
++---------+------------------+
+| salario | nome             |
++---------+------------------+
+|   30.00 | João B Silva     |
+|   40.00 | Fernando T Wong  |
+|   25.00 | Joice A Leite    |
+|   38.00 | Ronaldo K Lima   |
+|   55.00 | Jorge E Brito    |
+|   43.00 | Jennifer S Souza |
+|   25.00 | André V Pereira  |
+|   25.00 | Alice J Zelaya   |
++---------+------------------+
+SELECT nome_departamento, CONCAT (
+    ->      (primeiro_nome), ' ',
+    ->      (nome_meio), ' ',
+    ->      (ultimo_nome)) as nomeGerente
+    ->      from departamento
+    ->      inner join funcionario on (departamento.cpf_gerente=funcionario.cpf);
++-------------------+------------------+
+| nome_departamento | nomeGerente      |
++-------------------+------------------+
+| Matriz            | Jorge E Brito    |
+| Administração     | Jennifer S Souza |
+| Pesquisa          | Fernando T Wong  |
++-------------------+------------------+
+SELECT nome_departamento, CONCAT (
+    ->      (primeiro_nome), ' ',
+    ->      (nome_meio), ' ',
+    ->      (ultimo_nome)) as nomeGerente
+    ->      from departamento
+    ->      inner join funcionario on (departamento.cpf_gerente=funcionario.cpf)
+    ->      UNION
+    ->  SELECT salario,
+    ->      CONCAT (
+    ->      (primeiro_nome), ' ',
+    ->      (nome_meio), ' ',
+    ->      (ultimo_nome)) as nome 
+    ->      from funcionario;
++-------------------+------------------+
+| nome_departamento | nomeGerente      |
++-------------------+------------------+
+| Matriz            | Jorge E Brito    |
+| Administração     | Jennifer S Souza |
+| Pesquisa          | Fernando T Wong  |
+| 30.00             | João B Silva     |
+| 40.00             | Fernando T Wong  |
+| 25.00             | Joice A Leite    |
+| 38.00             | Ronaldo K Lima   |
+| 55.00             | Jorge E Brito    |
+| 43.00             | Jennifer S Souza |
+| 25.00             | André V Pereira  |
+| 25.00             | Alice J Zelaya   |
++-------------------+------------------+
+SELECT salario,
+    ->      CONCAT (
+    ->      (primeiro_nome), ' ',
+    ->      (nome_meio), ' ',
+    ->      (ultimo_nome)) as nome 
+    ->      from funcionario
+    -> UNION
+    -> SELECT nome_departamento, CONCAT (
+    ->      (primeiro_nome), ' ',
+    ->      (nome_meio), ' ',
+    ->      (ultimo_nome)) as nomeGerente
+    ->      from departamento
+    ->      inner join funcionario on (departamento.cpf_gerente=funcionario.cpf);
++-----------------+------------------+
+| salario         | nome             |
++-----------------+------------------+
+| 30.00           | João B Silva     |
+| 40.00           | Fernando T Wong  |
+| 25.00           | Joice A Leite    |
+| 38.00           | Ronaldo K Lima   |
+| 55.00           | Jorge E Brito    |
+| 43.00           | Jennifer S Souza |
+| 25.00           | André V Pereira  |
+| 25.00           | Alice J Zelaya   |
+| Matriz          | Jorge E Brito    |
+| Administração   | Jennifer S Souza |
+| Pesquisa        | Fernando T Wong  |
++-----------------+------------------+
+SELECT nome_departamento, CONCAT (
+    ->      (primeiro_nome), ' ',
+    ->      (nome_meio), ' ',
+    ->      (ultimo_nome)) as nomeGerente
+    ->      from departamento
+    ->      inner join funcionario on (departamento.cpf_gerente=funcionario.cpf);
++-------------------+------------------+
+| nome_departamento | nomeGerente      |
++-------------------+------------------+
+| Matriz            | Jorge E Brito    |
+| Administração     | Jennifer S Souza |
+| Pesquisa          | Fernando T Wong  |
++-------------------+------------------+
+SELECT salario,
+    ->      CONCAT (
+    ->      (primeiro_nome), ' ',
+    ->      (nome_meio), ' ',
+    ->      (ultimo_nome)) as nome 
+    ->      from funcionario;
++---------+------------------+
+| salario | nome             |
++---------+------------------+
+|   30.00 | João B Silva     |
+|   40.00 | Fernando T Wong  |
+|   25.00 | Joice A Leite    |
+|   38.00 | Ronaldo K Lima   |
+|   55.00 | Jorge E Brito    |
+|   43.00 | Jennifer S Souza |
+|   25.00 | André V Pereira  |
+|   25.00 | Alice J Zelaya   |
++---------+------------------+
+SELECT nome_departamento, CONCAT (
+    ->      (primeiro_nome), ' ',
+    ->      (nome_meio), ' ',
+    ->      (ultimo_nome)) as nomeGerente
+    ->      from departamento
+    ->      inner join funcionario on (departamento.cpf_gerente=funcionario.cpf);
++-------------------+------------------+
+| nome_departamento | nomeGerente      |
++-------------------+------------------+
+| Matriz            | Jorge E Brito    |
+| Administração     | Jennifer S Souza |
+| Pesquisa          | Fernando T Wong  |
++-------------------+------------------+
+SELECT salario,
+    ->      CONCAT (
+    ->      (primeiro_nome), ' ',
+    ->      (nome_meio), ' ',
+    ->      (ultimo_nome)) as nome 
+    ->      from funcionario;
++---------+------------------+
+| salario | nome             |
++---------+------------------+
+|   30.00 | João B Silva     |
+|   40.00 | Fernando T Wong  |
+|   25.00 | Joice A Leite    |
+|   38.00 | Ronaldo K Lima   |
+|   55.00 | Jorge E Brito    |
+|   43.00 | Jennifer S Souza |
+|   25.00 | André V Pereira  |
+|   25.00 | Alice J Zelaya   |
++---------+------------------+
 
 
 
