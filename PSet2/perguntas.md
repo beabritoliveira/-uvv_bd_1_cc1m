@@ -29,6 +29,13 @@
 | Administração     | Alice         | J         | Zelaya      |    54 | 1968-01-19      |   25.00 |
 +-------------------+---------------+-----------+-------------+-------+-----------------+---------+
 
+select nome_departamento, CONCAT (
+    ->      (primeiro_nome), ' ',
+    ->      (nome_meio), ' ',
+    ->      (ultimo_nome)) as nome, Floor(DATEDIFF(NOW(), data_nascimento) / 365) AS idade, data_nascimento, salario
+    ->     from departamento 
+    ->     inner join funcionario on (departamento.numero_departamento=funcionario.numero_departamento);
+
 
 4. select salario,  salario*1.2 as reajuste, primeiro_nome, nome_meio, ultimo_nome, Floor(DATEDIFF(NOW(), data_nascimento) / 365) AS idade
     from funcionario
@@ -50,6 +57,19 @@
 |   43.00 |  49.4500 | Jennifer      | S         | Souza       |    80 |
 +---------+----------+---------------+-----------+-------------+-------+
 
+select salario,  salario*1.2 as reajuste,CONCAT (
+    ->      (primeiro_nome), ' ',
+    ->      (nome_meio), ' ',
+    ->      (ultimo_nome)) as nome, Floor(DATEDIFF(NOW(), data_nascimento) / 365) AS idade
+    from funcionario
+    where salario <35.000
+    UNION
+    select salario,  salario*1.15 as CONCAT (
+    ->      (primeiro_nome), ' ',
+    ->      (nome_meio), ' ',
+    ->      (ultimo_nome)) as nome, Floor(DATEDIFF(NOW(), data_nascimento) / 365) AS idade
+    from funcionario
+    where salario >=35.000;
 
 5. Select primeiro_nome, nome_meio, ultimo_nome, nome_departamento, salario, cpf_gerente
 from departamento 
