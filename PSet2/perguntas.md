@@ -328,7 +328,7 @@ SELECT salario,
    (ultimo_nome)) as nome 
   from funcionario
   EXCEPT 
-  SELECT cpf_funcionario as nome, 
+  SELECT cpf_funcionario as cpf, nome_dependente, parentesco
   from dependente
   INNER JOIN funcionario on (dependente.cpf_funcionario=funcionario.cpf);
 
