@@ -369,23 +369,16 @@ SELECT salario,  numero_departamento, CONCAT (
    INNER JOIN trabalha_em ON (projeto.numero_projeto=trabalha_em.numero_projeto);
 
 
-SELECT projeto.numero_departamento, projeto.numero_projeto, hora, CONCAT (
+SELECT nome_departamento, nome_projeto, hora, CONCAT (
    (primeiro_nome), ' ',
    (nome_meio), ' ', 
    (ultimo_nome)) as nome
    from projeto
    INNER JOIN funcionario ON (projeto.numero_departamento=funcionario.numero_departamento)
-   INNER JOIN trabalha_em ON (projeto.numero_projeto=trabalha_em.numero_projeto);
+   INNER JOIN trabalha_em ON (projeto.numero_projeto=trabalha_em.numero_projeto)
+   INNER JOIN departamento ON (projeto.numero_departamento=departamento.numero_departamento)
+   GROUP BY nome_departamento, nome_projeto, nome;
+   
    
 prepare um relatório que mostre, para cada departamento, os projetos desse departamento e o nome completo dos funcionários que estão alocados
 em cada projeto. Além disso inclua o número de horas trabalhadas por cada funcionário, em cada projeto.
-
-Select projeto.numero_departamento, projeto.numero_projeto,SUM (hora, CONCAT ((primeiro_nome), ' ', (nome_meio), ' ', (ultimo_nome)) as nome)
-   from projeto
-   INNER JOIN funcionario ON (projeto.numero_departamento=funcionario.numero_departamento)
-   INNER JOIN trabalha_em ON (projeto.numero_projeto=trabalha_em.numero_projeto);
-   
-
-
-
-
