@@ -338,33 +338,29 @@ SELECT salario,
 +---------------------+------------------+-------------------+-------+------+
 (o sexo NÃO DEVE aparecer como M ou F, deve aparecer como “Masculino” ou “Feminino”)
 
-7. SELECT salario, numero_departamento,
-       CONCAT (
+7. SELECT salario,  numero_departamento, CONCAT (
    (primeiro_nome), ' ',
    (nome_meio), ' ',
-   (ultimo_nome)) as nome 
-  from funcionario
-  EXCEPT 
-  SELECT cpf_funcionario as cpf, nome_dependente, parentesco
+   (ultimo_nome)) as nome
+   from funcionario 
+   EXCEPT
+SELECT salario,  numero_departamento, CONCAT (
+   (primeiro_nome), ' ',
+   (nome_meio), ' ', 
+   (ultimo_nome)) as nome
   from dependente
   INNER JOIN funcionario on (dependente.cpf_funcionario=funcionario.cpf);
-+---------+---------------------+------------------+
+  +---------+---------------------+------------------+
 | salario | numero_departamento | nome             |
 +---------+---------------------+------------------+
-| 30.00   | 5                   | João B Silva     |
-| 40.00   | 5                   | Fernando T Wong  |
-| 25.00   | 5                   | Joice A Leite    |
-| 38.00   | 5                   | Ronaldo K Lima   |
-| 55.00   | 1                   | Jorge E Brito    |
-| 43.00   | 4                   | Jennifer S Souza |
-| 25.00   | 4                   | André V Pereira  |
-| 25.00   | 4                   | Alice J Zelaya   |
+|   25.00 |                   5 | Joice A Leite    |
+|   38.00 |                   5 | Ronaldo K Lima   |
+|   55.00 |                   1 | Jorge E Brito    |
+|   25.00 |                   4 | André V Pereira  |
+|   25.00 |                   4 | Alice J Zelaya   |
 +---------+---------------------+------------------+
 
-
-prepare um relatório que mostre, para cada funcionário que NÃO
-TEM dependente, seu nome completo, departamento e salário.
-
+8.
 
 
 
