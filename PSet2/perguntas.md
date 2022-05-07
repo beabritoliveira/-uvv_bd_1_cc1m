@@ -480,11 +480,24 @@ SELECT nome_departamento, nome_projeto, hora, CONCAT (
      WHERE trabalha_em.hora = 0;
 
 
-     
 
+13. SELECT CONCAT (
+     (primeiro_nome), ' ',
+     (nome_meio), ' ',
+     (ultimo_nome)) as nome_dos_presenteados, funcionario.sexo, Floor(DATEDIFF(NOW(), funcionario.data_nascimento) / 365) as idade
+     from funcionario
+     UNION
+    SELECT CONCAT (
+   (nome_dependente), ' ',
+   (nome_meio), ' ',
+   (ultimo_nome)) as nome_dos_presenteados, dependente.sexo, Floor(DATEDIFF(NOW(), dependente.data_nascimento) / 365) as idade
+   from dependente
+   INNER JOIN funcionario ON (dependente.cpf_funcionario=funcionario.cpf)
+   ORDER BY idade desc; 
+   
+idade em anos completos
 
-
-
+14.
 
 
 
