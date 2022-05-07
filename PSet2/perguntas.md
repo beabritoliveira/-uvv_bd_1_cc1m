@@ -469,7 +469,17 @@ SELECT nome_departamento, nome_projeto, hora, CONCAT (
      ORDER BY projeto.numero_projeto asc;
      
      
-     
+12. SELECT  CONCAT (
+     (primeiro_nome), ' ',
+     (nome_meio), ' ',
+     (ultimo_nome)) as nome, nome_projeto, nome_departamento
+     from funcionario 
+     INNER JOIN trabalha_em ON (funcionario.cpf=trabalha_em.cpf_funcionario)
+     INNER JOIN departamento ON (funcionario.numero_departamento=departamento.numero_departamento)
+     INNER JOIN projeto ON (projeto.numero_departamento=departamento.numero_departamento)
+     WHERE trabalha_em.hora = 0;
+
+
      
 
 
