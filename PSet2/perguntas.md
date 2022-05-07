@@ -378,7 +378,73 @@ SELECT nome_departamento, nome_projeto, hora, CONCAT (
    INNER JOIN trabalha_em ON (projeto.numero_projeto=trabalha_em.numero_projeto)
    INNER JOIN departamento ON (projeto.numero_departamento=departamento.numero_departamento)
    GROUP BY nome_departamento, nome_projeto, nome;
+   +-------------------+------------------+------+------------------+
+| nome_departamento | nome_projeto     | hora | nome             |
++-------------------+------------------+------+------------------+
+| Administração     | Informatização   | 10.0 | Alice J Zelaya   |
+| Administração     | Informatização   | 10.0 | André V Pereira  |
+| Administração     | Informatização   | 10.0 | Jennifer S Souza |
+| Administração     | Novosbenefícios  | 20.0 | Alice J Zelaya   |
+| Administração     | Novosbenefícios  | 20.0 | André V Pereira  |
+| Administração     | Novosbenefícios  | 20.0 | Jennifer S Souza |
+| Matriz            | Reorganização    | 10.0 | Jorge E Brito    |
+| Pesquisa          | ProdutoX         | 32.5 | Fernando T Wong  |
+| Pesquisa          | ProdutoX         | 32.5 | João B Silva     |
+| Pesquisa          | ProdutoX         | 32.5 | Joice A Leite    |
+| Pesquisa          | ProdutoX         | 32.5 | Ronaldo K Lima   |
+| Pesquisa          | ProdutoY         |  7.5 | Fernando T Wong  |
+| Pesquisa          | ProdutoY         |  7.5 | João B Silva     |
+| Pesquisa          | ProdutoY         |  7.5 | Joice A Leite    |
+| Pesquisa          | ProdutoY         |  7.5 | Ronaldo K Lima   |
+| Pesquisa          | ProdutoZ         | 10.0 | Fernando T Wong  |
+| Pesquisa          | ProdutoZ         | 10.0 | João B Silva     |
+| Pesquisa          | ProdutoZ         | 10.0 | Joice A Leite    |
+| Pesquisa          | ProdutoZ         | 10.0 | Ronaldo K Lima   |
++-------------------+------------------+------+------------------+
    
+9. SELECT projeto.nome_projeto, departamento.nome_departamento, sum(hora) as horas
+   from projeto
+   INNER JOIN trabalha_em ON (projeto.numero_projeto=trabalha_em.numero_projeto)
+   INNER JOIN departamento ON (projeto.numero_departamento=departamento.numero_departamento)
+   where trabalha_em.numero_projeto = '1'
+   UNION
+   SELECT projeto.nome_projeto, departamento.nome_departamento, sum(hora) as horas
+   from projeto
+   INNER JOIN trabalha_em ON (projeto.numero_projeto=trabalha_em.numero_projeto)
+   INNER JOIN departamento ON (projeto.numero_departamento=departamento.numero_departamento)
+   where trabalha_em.numero_projeto = '2'
+   UNION
+      SELECT projeto.nome_projeto, departamento.nome_departamento, sum(hora) as horas
+   from projeto
+   INNER JOIN trabalha_em ON (projeto.numero_projeto=trabalha_em.numero_projeto)
+   INNER JOIN departamento ON (projeto.numero_departamento=departamento.numero_departamento)
+   where trabalha_em.numero_projeto = '3'
+   UNION
+   SELECT projeto.nome_projeto, departamento.nome_departamento, sum(hora) as horas
+   from projeto
+   INNER JOIN trabalha_em ON (projeto.numero_projeto=trabalha_em.numero_projeto)
+   INNER JOIN departamento ON (projeto.numero_departamento=departamento.numero_departamento)
+   where trabalha_em.numero_projeto = '10'
+   UNION
+   SELECT projeto.nome_projeto, departamento.nome_departamento, sum(hora) as horas
+   from projeto
+   INNER JOIN trabalha_em ON (projeto.numero_projeto=trabalha_em.numero_projeto)
+   INNER JOIN departamento ON (projeto.numero_departamento=departamento.numero_departamento)
+   where trabalha_em.numero_projeto = '20'
+   UNION
+   SELECT projeto.nome_projeto, departamento.nome_departamento, sum(hora) as horas
+   from projeto
+   INNER JOIN trabalha_em ON (projeto.numero_projeto=trabalha_em.numero_projeto)
+   INNER JOIN departamento ON (projeto.numero_departamento=departamento.numero_departamento)
+   where trabalha_em.numero_projeto = '30'
+   ;
    
-prepare um relatório que mostre, para cada departamento, os projetos desse departamento e o nome completo dos funcionários que estão alocados
-em cada projeto. Além disso inclua o número de horas trabalhadas por cada funcionário, em cada projeto.
+ 
+
+
+
+
+
+
+
+
