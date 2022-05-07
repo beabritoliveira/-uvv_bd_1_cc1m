@@ -497,7 +497,24 @@ SELECT nome_departamento, nome_projeto, hora, CONCAT (
    
 idade em anos completos
 
-14.
+14. SELECT funcionario.numero_departamento, nome_departamento, count(cpf) as numFuncionarios
+ from funcionario 
+ INNER JOIN departamento ON (funcionario.numero_departamento=departamento.numero_departamento)
+ WHERE funcionario.numero_departamento = '1'
+ UNION
+SELECT funcionario.numero_departamento, nome_departamento, count(cpf) as numFuncionarios
+ from funcionario 
+ INNER JOIN departamento ON (funcionario.numero_departamento=departamento.numero_departamento)
+ WHERE funcionario.numero_departamento = '4'
+ UNION
+ SELECT funcionario.numero_departamento, nome_departamento, count(cpf) as numFuncionarios
+ from funcionario 
+ INNER JOIN departamento ON (funcionario.numero_departamento=departamento.numero_departamento)
+ WHERE funcionario.numero_departamento = '5';
+ 
+
+ 
+prepare um relatório que exiba quantos funcionários cada departamento tem.
 
 
 
