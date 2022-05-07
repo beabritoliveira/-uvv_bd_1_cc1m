@@ -441,6 +441,21 @@ SELECT nome_departamento, nome_projeto, hora, CONCAT (
    
  
 
+10. SELECT nome_departamento, funcionario.numero_departamento, avg(salario) as mediaSalarial
+    from funcionario 
+    INNER JOIN departamento ON (funcionario.numero_departamento=departamento.numero_departamento)
+    WHERE funcionario.numero_departamento = '1'
+    UNION
+    SELECT nome_departamento, funcionario.numero_departamento, avg(salario) as mediaSalarial
+    from funcionario 
+    INNER JOIN departamento ON (funcionario.numero_departamento=departamento.numero_departamento)
+    WHERE funcionario.numero_departamento = '4'
+    UNION
+    SELECT nome_departamento, funcionario.numero_departamento, avg(salario) as mediaSalarial
+    from funcionario 
+    INNER JOIN departamento ON (funcionario.numero_departamento=departamento.numero_departamento)
+    WHERE funcionario.numero_departamento = '5';
+
 
 
 
