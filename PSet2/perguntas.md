@@ -513,8 +513,34 @@ SELECT funcionario.numero_departamento, nome_departamento, count(cpf) as numFunc
  WHERE funcionario.numero_departamento = '5';
  
 
- 
-prepare um relatório que exiba quantos funcionários cada departamento tem.
+15.  SELECT distinct CONCAT (
+     (primeiro_nome), ' ',
+     (nome_meio), ' ',
+     (ultimo_nome)) as nome, funcionario.numero_departamento, nome_departamento, nome_projeto
+     from projeto 
+     INNER JOIN departamento ON (projeto.numero_departamento=departamento.numero_departamento)
+     INNER JOIN trabalha_em ON (projeto.numero_projeto=trabalha_em.numero_projeto)
+     INNER JOIN funcionario ON (projeto.numero_departamento=funcionario.numero_departamento)
+     UNION
+SELECT  CONCAT (
+     (primeiro_nome), ' ',
+     (nome_meio), ' ',
+     (ultimo_nome)) as nome, funcionario.numero_departamento, nome_departamento, nome_projeto
+     from projeto 
+     INNER JOIN departamento ON (projeto.numero_departamento=departamento.numero_departamento)
+     INNER JOIN trabalha_em ON (projeto.numero_projeto=trabalha_em.numero_projeto)
+     INNER JOIN funcionario ON (projeto.numero_departamento=funcionario.numero_departamento)
+     WHERE projeto.nome_projeto is null    
+     ORDER BY nome asc;
+     
+     
+como um funcionário pode estar alocado em mais de um projeto,
+prepare um relatório que exiba o 
+
+nome completo do funcionário, o departamento
+desse funcionário e o nome dos projetos em que cada funcionário está alocado.
+Atenção: se houver algum funcionário que não está alocado em nenhum projeto,
+o nome completo e o departamento também devem aparecer no relatório.
 
 
 
