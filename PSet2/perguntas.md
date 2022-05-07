@@ -459,6 +459,28 @@ SELECT nome_departamento, nome_projeto, hora, CONCAT (
 
 
 
+11. SELECT distinct nome_projeto, CONCAT (
+     (primeiro_nome), ' ',
+     (nome_meio), ' ',
+     (ultimo_nome)) as nome, hora*50 as recebido
+     from trabalha_em
+     INNER JOIN projeto ON (trabalha_em.numero_projeto=projeto.numero_projeto)
+     INNER JOIN funcionario ON (trabalha_em.cpf_funcionario=funcionario.cpf) 
+     ORDER BY projeto.numero_projeto asc;
+     
+     
+     
+     
+
+
+
+
+
+
+
+
+
+
 
 
 
