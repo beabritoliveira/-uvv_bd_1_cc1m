@@ -369,10 +369,10 @@ SELECT salario,  numero_departamento, CONCAT (
    INNER JOIN trabalha_em ON (projeto.numero_projeto=trabalha_em.numero_projeto);
 
 
-SELECT nome_departamento, nome_projeto, hora, CONCAT (
+SELECT nome_departamento, nome_projeto, CONCAT (
    (primeiro_nome), ' ',
    (nome_meio), ' ', 
-   (ultimo_nome)) as nome
+   (ultimo_nome)) as nome, hora
    from projeto
    INNER JOIN funcionario ON (projeto.numero_departamento=funcionario.numero_departamento)
    INNER JOIN trabalha_em ON (projeto.numero_projeto=trabalha_em.numero_projeto)
@@ -534,13 +534,7 @@ SELECT  CONCAT (
      ORDER BY nome asc;
      
      
-como um funcionário pode estar alocado em mais de um projeto,
-prepare um relatório que exiba o 
 
-nome completo do funcionário, o departamento
-desse funcionário e o nome dos projetos em que cada funcionário está alocado.
-Atenção: se houver algum funcionário que não está alocado em nenhum projeto,
-o nome completo e o departamento também devem aparecer no relatório.
 
 
 
