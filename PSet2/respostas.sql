@@ -129,7 +129,7 @@ SELECT  CONCAT (
      INNER JOIN trabalha_em ON (funcionario.cpf=trabalha_em.cpf_funcionario)
      INNER JOIN departamento ON (funcionario.numero_departamento=departamento.numero_departamento)
      INNER JOIN projeto ON (projeto.numero_departamento=departamento.numero_departamento)
-     WHERE trabalha_em.hora = 0;
+     WHERE trabalha_em.horas = 0;
      
 -- Pergunta 13
 
