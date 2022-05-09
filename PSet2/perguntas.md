@@ -481,23 +481,29 @@ SELECT nome_departamento, nome_projeto, CONCAT (
 
 
 
-13. SELECT CONCAT (
+13. SET @hoje = '2022-06-12';
+ SELECT CONCAT (
      (primeiro_nome), ' ',
      (nome_meio), ' ',
-     (ultimo_nome)) as nome_dos_presenteados, funcionario.sexo, Floor(DATEDIFF(NOW(), funcionario.data_nascimento) / 365) as idade
+     (ultimo_nome)) as nome_dos_presenteados, funcionario.sexo,  FLOOR(DATEDIFF(NOW(), funcionario.data_nascimento) / 365.25)
+      as idade
      from funcionario
      UNION
     SELECT CONCAT (
    (nome_dependente), ' ',
    (nome_meio), ' ',
-   (ultimo_nome)) as nome_dos_presenteados, dependente.sexo, Floor(DATEDIFF(NOW(), dependente.data_nascimento) / 365) as idade
+   (ultimo_nome)) as nome_dos_presenteados, dependente.sexo, FLOOR(DATEDIFF(NOW(), dependente.data_nascimento) / 365.25)
+      as idade
    from dependente
    INNER JOIN funcionario ON (dependente.cpf_funcionario=funcionario.cpf)
    ORDER BY idade desc; 
-   
+  
+SELECT FLOOR(DATEDIFF(DAY, funcionario.data_nascimento , @hoje) / 365.25)
+
+WHEN (MONTH(@dt_Inicio) > MONTH(@Dt_Fim) OR (MONTH(@dt_Inicio) = MONTH(@Dt_Fim) AND DAY(@dt_Inicio) > DAY(@Dt_Fim))) THEN -1 ELSE 0 END
 
 DECLARE @dataReferencia Date ;
-SET @dataReferencia = '2022-06-12';
+SET @hoje = '2022-06-12';
 
 select primeiro_nome,
 (
