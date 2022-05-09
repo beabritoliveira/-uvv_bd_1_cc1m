@@ -315,14 +315,16 @@ SELECT salario,
 
 
 
-6. SELECT numero_departamento,
+6. 
+ 
+ SELECT numero_departamento,
        CONCAT (
    (primeiro_nome), ' ',
    (nome_meio), ' ',
    (ultimo_nome)) as nome, CONCAT (
    (nome_dependente), ' ',
    (nome_meio), ' ',
-   (ultimo_nome)) as nomeDependente, Floor(DATEDIFF(NOW(), dependente.data_nascimento) / 365) AS idade, dependente.sexo
+   (ultimo_nome)) as nomeDependente, Floor(DATEDIFF(NOW(), dependente.data_nascimento) / 365) AS idade, dependente.sexo(CASE WHEN sexo = 'M' THEN 'masculino' ELSE 'feminino' END)
   from dependente
   INNER JOIN funcionario ON (dependente.cpf_funcionario=funcionario.cpf); 
 +---------------------+------------------+-------------------+-------+------+
@@ -336,6 +338,14 @@ SELECT salario,
 |                   5 | Fernando T Wong  | Tiago T Wong      |    38 | M    |
 |                   4 | Jennifer S Souza | Antonio S Souza   |    80 | M    |
 +---------------------+------------------+-------------------+-------+------+
+
+(
+    CASE 
+        WHEN 
+        SEXO = F
+        THEN FEMININO 
+    ELSE MASCULICO END
+) as sex
 (o sexo NÃO DEVE aparecer como M ou F, deve aparecer como “Masculino” ou “Feminino”)
 
 7. SELECT salario,  numero_departamento, CONCAT (
