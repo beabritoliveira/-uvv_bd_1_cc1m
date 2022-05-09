@@ -132,6 +132,44 @@ SELECT  CONCAT (
      WHERE trabalha_em.horas = 0;
      
 -- Pergunta 13
+SET @dataReferencia = '2022-06-12';
+SELECT CONCAT (
+     (primeiro_nome), ' ',
+     (nome_meio), ' ',
+     (ultimo_nome)) as nome_dos_presenteados, funcionario.sexo, (
+    CASE 
+        WHEN 
+        MONTH(@dataReferencia) > MONTH(funcionario.data_nascimento) -- *1
+        OR
+        -- *2
+        (
+            MONTH(@dataReferencia) = MONTH(funcionario.data_nascimento) 
+            AND DAY(@dataReferencia) >= DAY(funcionario.data_nascimento) 
+        )
+    THEN Floor(DATEDIFF(NOW(), funcionario.data_nascimento) / 365) 
+    ELSE Floor(DATEDIFF(NOW(), funcionario.data_nascimento) / 365) -1 END
+) as idade
+     from funcionario
+     UNION
+    SELECT CONCAT (
+   (nome_dependente), ' ',
+   (nome_meio), ' ',
+   (ultimo_nome)) as nome_dos_presenteados, dependente.sexo, (
+    CASE 
+        WHEN 
+        MONTH(@dataReferencia) > MONTH(dependente.data_nascimento) -- *1
+        OR
+        -- *2
+        (
+            MONTH(@dataReferencia) = MONTH(dependente.data_nascimento) 
+            AND DAY(@dataReferencia) >= DAY(funcionario.data_nascimento) 
+        )
+    THEN Floor(DATEDIFF(NOW(), dependente.data_nascimento) / 365) 
+    ELSE Floor(DATEDIFF(NOW(), dependente.data_nascimento) / 365) -1 END
+) as idade
+   from dependente
+   INNER JOIN funcionario ON (dependente.cpf_funcionario=funcionario.cpf)
+   ORDER BY idade desc; 
 
 -- Pergunta 14
 SELECT funcionario.numero_departamento, nome_departamento, count(cpf) as numFuncionarios
