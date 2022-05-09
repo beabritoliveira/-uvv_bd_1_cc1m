@@ -495,7 +495,29 @@ SELECT nome_departamento, nome_projeto, CONCAT (
    INNER JOIN funcionario ON (dependente.cpf_funcionario=funcionario.cpf)
    ORDER BY idade desc; 
    
+
+DECLARE @dataReferencia Date ;
+SET @dataReferencia = '2022-06-12';
+
+select primeiro_nome,
+(
+    CASE 
+        WHEN 
+        MONTH(@dataReferencia) > MONTH(funcionario.data_nascimento) -- *1
+        (
+            MONTH(@dataReferencia) = MONTH(funcionario.data_nascimento) 
+            AND DAY(@dataReferencia) >= DAY(funcionario.data_nascimento) 
+        )
+    THEN Floor(DATEDIFF(NOW(), funcionario.data_nascimento) / 365) 
+    ELSE Floor(DATEDIFF(NOW(), funcionario.data_nascimento) / 365) -1 
+) as IDADE
+from funcionario;
+;
+
+
+
 idade em anos completos
+
 
 14. SELECT funcionario.numero_departamento, nome_departamento, count(cpf) as numFuncionarios
  from funcionario 
