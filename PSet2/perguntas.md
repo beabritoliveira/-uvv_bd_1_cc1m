@@ -324,9 +324,20 @@ SELECT salario,
    (ultimo_nome)) as nome, CONCAT (
    (nome_dependente), ' ',
    (nome_meio), ' ',
-   (ultimo_nome)) as nomeDependente, Floor(DATEDIFF(NOW(), dependente.data_nascimento) / 365) AS idade, dependente.sexo(CASE WHEN sexo = 'M' THEN 'masculino' ELSE 'feminino' END)
+   (ultimo_nome)) as nomeDependente, Floor(DATEDIFF(NOW(), dependente.data_nascimento) / 365) AS idade, CASE dependente.sexo     
+         WHEN 'F' THEN 'Feminino'     
+         WHEN 'M' THEN 'Masculino'     
+         ELSE 'nenhum'     
+      END AS sexo
   from dependente
   INNER JOIN funcionario ON (dependente.cpf_funcionario=funcionario.cpf); 
+  
+   SELECT NOME, SOBRENOME,    
+ CASE dependente.sexo     
+         WHEN 'F' THEN 'FEMININO'     
+         WHEN 'M' THEN 'MASCULINO'     
+         ELSE 'NENHUM'     
+      END AS SEXO, 
 +---------------------+------------------+-------------------+-------+------+
 | numero_departamento | nome             | nomeDependente    | idade | sexo |
 +---------------------+------------------+-------------------+-------+------+
