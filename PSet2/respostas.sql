@@ -49,7 +49,7 @@ SELECT salario,  numero_departamento, CONCAT (
 SELECT nome_departamento, nome_projeto, CONCAT (
    (primeiro_nome), ' ',
    (nome_meio), ' ', 
-   (ultimo_nome)) as nome, hora
+   (ultimo_nome)) as nome, horas
    from projeto
    INNER JOIN funcionario ON (projeto.numero_departamento=funcionario.numero_departamento)
    INNER JOIN trabalha_em ON (projeto.numero_projeto=trabalha_em.numero_projeto)
@@ -57,37 +57,37 @@ SELECT nome_departamento, nome_projeto, CONCAT (
    GROUP BY nome_departamento, nome_projeto, nome;
    
 -- Pergunta 9
-SELECT projeto.nome_projeto, departamento.nome_departamento, sum(hora) as horas
+SELECT projeto.nome_projeto, departamento.nome_departamento, sum(horas) as horas
    from projeto
    INNER JOIN trabalha_em ON (projeto.numero_projeto=trabalha_em.numero_projeto)
    INNER JOIN departamento ON (projeto.numero_departamento=departamento.numero_departamento)
    where trabalha_em.numero_projeto = '1'
    UNION
-   SELECT projeto.nome_projeto, departamento.nome_departamento, sum(hora) as horas
+   SELECT projeto.nome_projeto, departamento.nome_departamento, sum(horas) as horas
    from projeto
    INNER JOIN trabalha_em ON (projeto.numero_projeto=trabalha_em.numero_projeto)
    INNER JOIN departamento ON (projeto.numero_departamento=departamento.numero_departamento)
    where trabalha_em.numero_projeto = '2'
    UNION
-      SELECT projeto.nome_projeto, departamento.nome_departamento, sum(hora) as horas
+      SELECT projeto.nome_projeto, departamento.nome_departamento, sum(horas) as horas
    from projeto
    INNER JOIN trabalha_em ON (projeto.numero_projeto=trabalha_em.numero_projeto)
    INNER JOIN departamento ON (projeto.numero_departamento=departamento.numero_departamento)
    where trabalha_em.numero_projeto = '3'
    UNION
-   SELECT projeto.nome_projeto, departamento.nome_departamento, sum(hora) as horas
+   SELECT projeto.nome_projeto, departamento.nome_departamento, sum(horas) as horas
    from projeto
    INNER JOIN trabalha_em ON (projeto.numero_projeto=trabalha_em.numero_projeto)
    INNER JOIN departamento ON (projeto.numero_departamento=departamento.numero_departamento)
    where trabalha_em.numero_projeto = '10'
    UNION
-   SELECT projeto.nome_projeto, departamento.nome_departamento, sum(hora) as horas
+   SELECT projeto.nome_projeto, departamento.nome_departamento, sum(horas) as horas
    from projeto
    INNER JOIN trabalha_em ON (projeto.numero_projeto=trabalha_em.numero_projeto)
    INNER JOIN departamento ON (projeto.numero_departamento=departamento.numero_departamento)
    where trabalha_em.numero_projeto = '20'
    UNION
-   SELECT projeto.nome_projeto, departamento.nome_departamento, sum(hora) as horas
+   SELECT projeto.nome_projeto, departamento.nome_departamento, sum(horas) as horas
    from projeto
    INNER JOIN trabalha_em ON (projeto.numero_projeto=trabalha_em.numero_projeto)
    INNER JOIN departamento ON (projeto.numero_departamento=departamento.numero_departamento)
@@ -114,7 +114,7 @@ SELECT nome_departamento, funcionario.numero_departamento, avg(salario) as media
 SELECT distinct nome_projeto, CONCAT (
      (primeiro_nome), ' ',
      (nome_meio), ' ',
-     (ultimo_nome)) as nome, hora*50 as recebido
+     (ultimo_nome)) as nome, horas*50 as recebido
      from trabalha_em
      INNER JOIN projeto ON (trabalha_em.numero_projeto=projeto.numero_projeto)
      INNER JOIN funcionario ON (trabalha_em.cpf_funcionario=funcionario.cpf) 
