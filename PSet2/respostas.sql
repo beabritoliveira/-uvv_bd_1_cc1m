@@ -30,6 +30,20 @@ select salario,  salario*1.2 as salario_reajustado, CONCAT (
 -- Pergunta 5
 
 -- Pergunta 6
+ SELECT numero_departamento,
+       CONCAT (
+   (primeiro_nome), ' ',
+   (nome_meio), ' ',
+   (ultimo_nome)) as nome, CONCAT (
+   (nome_dependente), ' ',
+   (nome_meio), ' ',
+   (ultimo_nome)) as nomeDependente, Floor(DATEDIFF(NOW(), dependente.data_nascimento) / 365) AS idade, CASE dependente.sexo     
+         WHEN 'F' THEN 'Feminino'     
+         WHEN 'M' THEN 'Masculino'     
+         ELSE 'nenhum'     
+      END AS sexo
+  from dependente
+  INNER JOIN funcionario ON (dependente.cpf_funcionario=funcionario.cpf); 
 
 -- Pergunta 7
 SELECT salario,  numero_departamento, CONCAT (
