@@ -28,6 +28,16 @@ select salario,  salario*1.2 as salario_reajustado, CONCAT (
     where salario >=35.000;
     
 -- Pergunta 5
+SELECT nome_departamento, CONCAT (
+        (funct.primeiro_nome), ' ',
+        (funct.nome_meio), ' ',
+        (funct.ultimo_nome)) as nome, funct.salario, CONCAT (
+        (func.primeiro_nome), ' ',
+        (func.nome_meio), ' ',
+        (func.ultimo_nome)) as nome_gerente
+       from departamento
+       inner join funcionario as func on (departamento.cpf_gerente=func.cpf) 
+       join funcionario as funct on (departamento.numero_departamento=funct.numero_departamento);
 
 -- Pergunta 6
  SELECT numero_departamento,
