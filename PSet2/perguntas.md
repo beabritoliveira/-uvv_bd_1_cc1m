@@ -126,11 +126,15 @@ SELECT nome_departamento, CONCAT (
 | Pesquisa          | Fernando T Wong  |   40.00 |
 +-------------------+------------------+---------+
 SELECT nome_departamento, CONCAT (
-    ->      (primeiro_nome), ' ',
-    ->      (nome_meio), ' ',
-    ->      (ultimo_nome)) as nome, salario 
-    ->      from departamento
-    ->      inner join funcionario on (departamento.cpf_gerente=funcionario.cpf) OR (departamento.numero_departamento=funcionario.numero_departamento);
+        (func.primeiro_nome), ' ',
+        (func.nome_meio), ' ',
+        (func.ultimo_nome)) as nome, salario, CONCAT (
+        (funct.primeiro_nome), ' ',
+        (funct.nome_meio), ' ',
+        (funct.ultimo_nome)) as nomeGerente
+       from departamento
+       inner join funcionario as func on (departamento.cpf_gerente=funcionario.cpf) 
+Join funcionario as funct on (departamento.numero_departamento=funcionario.numero_departamento);
 +-------------------+------------------+---------+
 | nome_departamento | nome             | salario |
 +-------------------+------------------+---------+
