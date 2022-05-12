@@ -48,7 +48,7 @@ CREATE TABLE `projeto` (
 CREATE TABLE `trabalha_em` (
   `cpf_funcionario` char(11) NOT NULL COMMENT 'CPF do funcionário. Faz parte da PK desta tabela e é uma FK para a tabela funcionário.',
   `numero_projeto` int(11) NOT NULL COMMENT 'Número do projeto. Faz parte da PK desta tabela e é uma FK para a tabela projeto.',
-  `hora` decimal(3,1) NOT NULL COMMENT 'Horas trabalhadas pelo funcionário neste projeto.',
+  `horas` decimal(3,1) NOT NULL COMMENT 'Horas trabalhadas pelo funcionário neste projeto.',
   PRIMARY KEY (`cpf_funcionario`,`numero_projeto`)
 );
 CREATE TABLE `departamento` (
@@ -147,52 +147,52 @@ INSERT INTO dependente (cpf_funcionario, nome_dependente, sexo, data_nascimento,
 INSERT INTO dependente (cpf_funcionario, nome_dependente, sexo, data_nascimento, parentesco) VALUES(
 12345678966, "Elizabeth", "F", 19670505, "Esposa"
 );
-INSERT INTO trabalha_em (cpf_funcionario, numero_projeto, hora) VALUES (
+INSERT INTO trabalha_em (cpf_funcionario, numero_projeto, horas) VALUES (
 12345678966, 1, 32.5
 );
-INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
+INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, horas) VALUES (
 12345678966, 2, 7.5
 );
-INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
+INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, horas) VALUES (
 66688444476, 3, 40.0
 );
-INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
+INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, horas) VALUES (
 45345345376, 1, 20.0
 );
-INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
+INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, horas) VALUES (
 45345345376, 2, 20.0
 );
-INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
+INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, horas) VALUES (
 33344555587, 2, 10.0
 );
-INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
+INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, horas) VALUES (
 33344555587, 3, 10.0
 );
-INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
+INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, horas) VALUES (
 33344555587, 10, 10.0
 );
-INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
+INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, horas) VALUES (
 33344555587, 20, 10.0
 );
-INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
+INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, horas) VALUES (
 99988777767, 30, 30.0
 );
-INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
+INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, horas) VALUES (
 99988777767, 10, 10.0
 );
-INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
+INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, horas) VALUES (
 98798798733, 10, 35.0
 );
-INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
+INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, horas) VALUES (
 98798798733, 30, 5.0
 );
-INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
+INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, horas) VALUES (
 98765432168, 30, 20.0
 );
-INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
+INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, horas) VALUES (
 98765432168, 20, 15.0
 );
-INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, hora) VALUES (
+INSERT INTO trabalha_em  (cpf_funcionario, numero_projeto, horas) VALUES (
 88866555576, 20, "0"
 );
 alter table funcionario
@@ -205,7 +205,7 @@ alter table funcionario
 add constraint CHECK (salario>=0);
 
 alter table trabalha_em
-add constraint CHECK (hora>=0);
+add constraint CHECK (horas>=0);
 
 alter table departamento
 add constraint CHECK (numero_departamento>=0);
