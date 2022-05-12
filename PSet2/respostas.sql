@@ -61,15 +61,17 @@ SELECT nome_departamento, CONCAT (
 SELECT CONCAT (
    (primeiro_nome), ' ',
    (nome_meio), ' ',
-   (ultimo_nome)) as nome, numero_departamento, salario
+   (ultimo_nome)) as nome, nome_departamento, salario
    from funcionario 
+ INNER JOIN departamento ON (funcionario.numero_departamento=departamento.numero_departamento)
    EXCEPT
 SELECT  CONCAT (
    (primeiro_nome), ' ',
    (nome_meio), ' ', 
-   (ultimo_nome)) as nome, numero_departamento, salario
-  from dependente
-  INNER JOIN funcionario on (dependente.cpf_funcionario=funcionario.cpf);
+   (ultimo_nome)) as nome, nome_departamento, salario
+  from funcionario
+ INNER JOIN dependente ON (funcionario.cpf=dependente.cpf_funcionario)
+ INNER JOIN departamento ON (funcionario.numero_departamento=departamento.numero_departamento);
   
 -- Pergunta 8
 SELECT nome_departamento, nome_projeto, CONCAT (
