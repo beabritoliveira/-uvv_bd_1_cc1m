@@ -123,26 +123,26 @@ SELECT projeto.nome_projeto, departamento.nome_departamento, sum(horas) as horas
    ;
    
 -- Pergunta 10
-SELECT nome_departamento, funcionario.numero_departamento, avg(salario) as mediaSalarial
+SELECT  funcionario.numero_departamento, nome_departamento, avg(salario) as mediaSalarial
     from funcionario 
     INNER JOIN departamento ON (funcionario.numero_departamento=departamento.numero_departamento)
     WHERE funcionario.numero_departamento = '1'
     UNION
-    SELECT nome_departamento, funcionario.numero_departamento, avg(salario) as mediaSalarial
+    SELECT  funcionario.numero_departamento, nome_departamento, avg(salario) as mediaSalarial
     from funcionario 
     INNER JOIN departamento ON (funcionario.numero_departamento=departamento.numero_departamento)
     WHERE funcionario.numero_departamento = '4'
     UNION
-    SELECT nome_departamento, funcionario.numero_departamento, avg(salario) as mediaSalarial
+    SELECT  funcionario.numero_departamento, nome_departamento, avg(salario) as mediaSalarial
     from funcionario 
     INNER JOIN departamento ON (funcionario.numero_departamento=departamento.numero_departamento)
     WHERE funcionario.numero_departamento = '5';
     
 -- Pergunta 11
-SELECT distinct nome_projeto, CONCAT (
+SELECT distinct CONCAT (
      (primeiro_nome), ' ',
      (nome_meio), ' ',
-     (ultimo_nome)) as nome, horas*50 as recebido
+     (ultimo_nome)) as nome, nome_projeto, horas*50 as recebido
      from trabalha_em
      INNER JOIN projeto ON (trabalha_em.numero_projeto=projeto.numero_projeto)
      INNER JOIN funcionario ON (trabalha_em.cpf_funcionario=funcionario.cpf) 
