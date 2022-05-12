@@ -3,7 +3,8 @@
 ###### Beatriz Brito Oliveira - CC1MB
 ###### Professor: Abrantes Araujo Silva Filho
 ###### Monitora: Suellen Miranda Amorim
+-----------------------------------------------
 
-Comentar de qual sql eu usei pra fazer 
+### O SBGD utilizado para a realização
 
 
