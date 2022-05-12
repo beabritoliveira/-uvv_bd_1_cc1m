@@ -8,22 +8,22 @@ select sexo, avg(salario) from funcionario group by sexo;
 select nome_departamento, CONCAT (
     (primeiro_nome), ' ',
     (nome_meio), ' ',
-    (ultimo_nome)) as nome, Floor(DATEDIFF(NOW(), data_nascimento) / 365) AS idade, data_nascimento, salario
+    (ultimo_nome)) as nome, Floor(DATEDIFF(NOW(), data_nascimento) / 365.25) AS idade, data_nascimento, salario
     from departamento 
     inner join funcionario on (departamento.numero_departamento=funcionario.numero_departamento);
     
 -- Pergunta 4
-select salario,  salario*1.2 as salario_reajustado, CONCAT (
+select CONCAT (
     (primeiro_nome), ' ',
     (nome_meio), ' ',
-    (ultimo_nome)) as nome, Floor(DATEDIFF(NOW(), data_nascimento) / 365) AS idade
+    (ultimo_nome)) as nome, Floor(DATEDIFF(NOW(), data_nascimento) / 365.25) AS idade, salario,  salario*1.2 as salario_reajustado
     from funcionario
     where salario <35.000
     UNION
-    select salario,  salario*1.15 as salario_reajustado, CONCAT (
+    select CONCAT (
      (primeiro_nome), ' ',
      (nome_meio), ' ',
-     (ultimo_nome)) as nome, Floor(DATEDIFF(NOW(), data_nascimento) / 365) AS idade
+     (ultimo_nome)) as nome, Floor(DATEDIFF(NOW(), data_nascimento) / 365.25) AS idade, salario,  salario*1.15 as salario_reajustado
     from funcionario
     where salario >=35.000;
     
@@ -37,10 +37,11 @@ SELECT nome_departamento, CONCAT (
         (func.ultimo_nome)) as nome_gerente
        from departamento
        inner join funcionario as func on (departamento.cpf_gerente=func.cpf) 
-       join funcionario as funct on (departamento.numero_departamento=funct.numero_departamento);
+       join funcionario as funct on (departamento.numero_departamento=funct.numero_departamento)
+       ORDER BY nome_departamento asc, salario desc; 
 
 -- Pergunta 6
- SELECT numero_departamento,
+ SELECT departamento.nome_departamento,
        CONCAT (
    (primeiro_nome), ' ',
    (nome_meio), ' ',
@@ -52,20 +53,21 @@ SELECT nome_departamento, CONCAT (
          WHEN 'M' THEN 'Masculino'     
          ELSE 'nenhum'     
       END AS sexo
-  from dependente
-  INNER JOIN funcionario ON (dependente.cpf_funcionario=funcionario.cpf); 
+  from funcionario
+  INNER JOIN dependente ON (funcionario.cpf=dependente.cpf_funcionario)
+ INNER JOIN departamento ON (funcionario.numero_departamento=departamento.numero_departamento);
 
 -- Pergunta 7
-SELECT salario,  numero_departamento, CONCAT (
+SELECT CONCAT (
    (primeiro_nome), ' ',
    (nome_meio), ' ',
-   (ultimo_nome)) as nome
+   (ultimo_nome)) as nome, numero_departamento, salario
    from funcionario 
    EXCEPT
-SELECT salario,  numero_departamento, CONCAT (
+SELECT  CONCAT (
    (primeiro_nome), ' ',
    (nome_meio), ' ', 
-   (ultimo_nome)) as nome
+   (ultimo_nome)) as nome, numero_departamento, salario
   from dependente
   INNER JOIN funcionario on (dependente.cpf_funcionario=funcionario.cpf);
   
