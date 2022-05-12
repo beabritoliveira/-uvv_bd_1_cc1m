@@ -11,3 +11,4 @@
 
 ## O arquivo *respostas.sql*
 * Dentro da pasta PSet2 se encontra um arquivo com o título ***respostas.sql***
+* Mas atenção caso queira utilizar o arquivo produzido nesse trabalho com o realizado anteriormente, cheque se o atributo "horas" das tabela trabalha_em está escrito da mesma maneira e pois há a possibilidade eles serem conflitantes, por um ser "hora" e o outro "horas".
