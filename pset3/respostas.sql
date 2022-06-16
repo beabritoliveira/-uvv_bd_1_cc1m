@@ -16,3 +16,24 @@ WITH produtos AS (
 )
 SELECT * FROM produtos
 ORDER BY descricao ASC, classificacao ASC, especificacao ASC;
+
+
+WITH produtos AS (
+  SELECT  d.nome as descricao, cl.nome as classificacao, c.nome as especificacao
+  FROM classificacao c
+ INNER JOIN classificacao cl 
+	ON c.codigo_pai=cl.codigo
+ INNER JOIN classificacao d
+	ON cl.codigo_pai=d.codigo
+  WHERE d.codigo_pai IS NULL
+UNION ALL
+  SELECT  d.nome as descricao, cl.nome as classificacao, c.nome as especificacao
+  FROM classificacao c
+ INNER JOIN classificacao cl 
+	ON c.codigo_pai=cl.codigo
+ INNER JOIN classificacao d
+	ON cl.codigo_pai=d.codigo
+  WHERE d.codigo_pai IS NOT NULL
+)
+SELECT * FROM produtos
+ORDER BY descricao ASC, classificacao ASC, especificacao ASC;
