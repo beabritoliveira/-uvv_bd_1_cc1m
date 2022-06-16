@@ -1,4 +1,5 @@
-SELECT * 
+SELECT codigo_pai, codigo, nome
 FROM classificacao
-ORDER BY codigo asc, codigo_pai asc
+INNER JOIN 
+ORDER BY codigo_pai asc, codigo asc
 ;
